@@ -1,1 +1,105 @@
 @use "reset";
+
+@mixin flex($direction, $align, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+body {
+  min-height: 100vh;
+  @include flex(column, center, center);
+  font-family: "Inter", sans-serif;
+}
+
+main {
+  max-width: 23rem;
+}
+
+.testimonial-container {
+  position: relative;
+  @include flex(column, center, center);
+}
+
+.pattern-bg {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  transform: translateY(-10%);
+
+  img {
+    width: 100%;
+  }
+}
+
+.pattern-curve {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+
+  img {
+    width: 100%;
+  }
+}
+
+.testimonial-image-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 16.5rem;
+  box-shadow: 15px 10px 15px rgba(0, 0, 0, 0.15);
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.button-slider-wrapper {
+  @include flex(row, center, space-between);
+  box-shadow: 0px 2px 6px hsla(0, 0%, 0%, 0.2);
+  background-color: white;
+  border-radius: 16px;
+  width: 3.5rem;
+  transform: translateY(-50%);
+
+  .slider-button {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    transform: scale(0.6);
+    padding: 0.4rem;
+  }
+}
+
+.blockquote-wrapper {
+  position: relative;
+  @include flex(column, center, center);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  max-width: 21rem;
+
+  .quotes-image {
+    position: absolute;
+    top: 0;
+    width: 3rem;
+    transform: translateY(-14px);
+  }
+
+  .testimonial-quote {
+    text-align: center;
+    padding-inline: 1.5rem;
+  }
+}
+
+.testimonial-user-wrapper {
+  text-align: center;
+  .user {
+    font-weight: 700;
+  }
+  .user-job {
+    font-size: 0.875rem;
+    opacity: 0.4;
+  }
+}
