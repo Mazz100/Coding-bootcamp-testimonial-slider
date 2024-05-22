@@ -1,22 +1,17 @@
 import "./App.css";
-import TestimonialComponent from "./TestimonialComponent";
+import TestimonialCarousel from "./TestimonialCarousel";
+import TestimonialSlider from "./TestimonialSlider";
 import patternCurve from "./images/pattern-curve.svg";
 
 function App() {
   return (
     <>
       <main>
-        <TestimonialComponent />
+        <TestimonialCarousel />
+        <TestimonialSlider />
       </main>
 
-      <footer>
-        {/*Pattern curve with absolute positioning*/}
-        <img
-          className="pattern-curve"
-          src={patternCurve}
-          alt="testimonial pattern curve"
-        />
-      </footer>
+      <footer></footer>
     </>
   );
 }

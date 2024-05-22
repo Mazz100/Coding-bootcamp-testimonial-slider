@@ -96,14 +96,17 @@ body {
   justify-content: center;
   align-items: center;
   font-family: "Inter", sans-serif;
+  background-image: url(../images/pattern-curve.svg);
+  background-repeat: no-repeat;
+  background-position: bottom left;
 }
 
 main {
+  position: relative;
   max-width: 23rem;
 }
 
 .testimonial-container {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,20 +116,9 @@ main {
 .pattern-bg {
   position: absolute;
   z-index: -1;
-  top: 0;
-  transform: translateY(-10%);
+  top: -30px;
 }
 .pattern-bg img {
-  width: 100%;
-}
-
-.pattern-curve {
-  position: absolute;
-  z-index: -1;
-  bottom: 0;
-  left: 0;
-}
-.pattern-curve img {
   width: 100%;
 }
 
@@ -146,11 +138,13 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  left: calc(50% - 20px);
+  top: calc(50% - 10px);
   box-shadow: 0px 2px 6px hsla(0, 0%, 0%, 0.2);
   background-color: white;
   border-radius: 16px;
   width: 3.5rem;
-  transform: translateY(-50%);
 }
 .button-slider-wrapper .slider-button {
   border: none;
@@ -160,7 +154,7 @@ main {
   padding: 0.4rem;
 }
 
-.blockquote-wrapper {
+.figure-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -170,24 +164,24 @@ main {
   margin-bottom: 1rem;
   max-width: 21rem;
 }
-.blockquote-wrapper .quotes-image {
+.figure-wrapper .quotes-image {
   position: absolute;
   top: 0;
   width: 3rem;
   transform: translateY(-14px);
 }
-.blockquote-wrapper .testimonial-quote {
+.figure-wrapper .testimonial-quote {
   text-align: center;
   padding-inline: 1.5rem;
 }
 
-.testimonial-user-wrapper {
+.figcaption-wrapper {
   text-align: center;
 }
-.testimonial-user-wrapper .user {
+.figcaption-wrapper .person {
   font-weight: 700;
 }
-.testimonial-user-wrapper .user-job {
+.figcaption-wrapper .person-job {
   font-size: 0.875rem;
   opacity: 0.4;
 }/*# sourceMappingURL=style.css.map */
