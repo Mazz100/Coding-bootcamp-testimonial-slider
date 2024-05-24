@@ -22,14 +22,23 @@ main {
   max-width: 23rem;
 }
 
+.carousel-wrapper {
+  @include flex(column, center, center);
+}
+
 .testimonial-container {
   @include flex(column, center, center);
+}
+
+//hide other testimonial class
+.hidden-testimonial {
+  display: none;
 }
 
 .pattern-bg {
   position: absolute;
   z-index: -1;
-  top: -30px;
+  top: calc(0% - 30px);
 
   img {
     width: 100%;
@@ -48,22 +57,32 @@ main {
   }
 }
 
-.button-slider-wrapper {
-  @include flex(row, center, space-between);
+.button-controls {
+  @include flex(row, end, space-between);
+
   position: absolute;
-  left: calc(50% - 20px);
   top: calc(50% - 10px);
   box-shadow: 0px 2px 6px hsla(0, 0%, 0%, 0.2);
   background-color: white;
   border-radius: 16px;
-  width: 3.5rem;
+  width: 4rem;
+  overflow: hidden;
+  transform: scale(0.9);
 
   .slider-button {
     border: none;
     background-color: white;
     cursor: pointer;
-    transform: scale(0.6);
     padding: 0.4rem;
+    transition: background-color 200ms linear;
+  }
+
+  .slider-button:hover {
+    background-color: #e9e9e9;
+  }
+
+  .slider-button:focus {
+    outline-color: hsl(221, 100%, 79%);
   }
 }
 
@@ -71,12 +90,11 @@ main {
   position: relative;
   @include flex(column, center, center);
   margin-top: 3rem;
-  margin-bottom: 1rem;
   max-width: 21rem;
 
   .quotes-image {
     position: absolute;
-    top: 0;
+    top: calc(0% - 5px);
     width: 3rem;
     transform: translateY(-14px);
   }
@@ -84,6 +102,7 @@ main {
   .testimonial-quote {
     text-align: center;
     padding-inline: 1.5rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -95,6 +114,71 @@ main {
   }
   .person-job {
     font-size: 0.875rem;
-    opacity: 0.4;
+    opacity: 0.6;
+  }
+}
+
+//Tablet breakpoint - 768px
+@media (min-width: 48rem) {
+  .testimonial-image-wrapper {
+    max-width: 24rem;
+  }
+
+  .button-controls {
+    top: calc(50% + 40px);
+  }
+
+  .pattern-bg {
+    max-width: 30rem;
+    top: calc(0% - 40px);
+  }
+}
+
+// Desktop breakpoint - 1280px
+@media (min-width: 80rem) {
+  main {
+    max-width: none;
+  }
+
+  .testimonial-image-wrapper {
+    max-width: none;
+  }
+
+  .testimonial-container {
+    @include flex(row-reverse, center, center);
+  }
+
+  .pattern-bg {
+    max-width: none;
+    top: calc(-10% - 10px);
+    right: calc(-10% - 10px);
+  }
+
+  .button-controls {
+    top: calc(100% - 15px);
+    left: calc(50% - 50px);
+  }
+
+  .figure-wrapper {
+    margin: 0;
+    padding: 0;
+    max-width: 33ch;
+    transform: translateX(40px);
+
+    .quotes-image {
+      left: calc(0% + 50px);
+    }
+
+    .testimonial-quote {
+      text-align: start;
+      padding: 0;
+      margin-bottom: 0.6rem;
+    }
+
+    .figcaption-wrapper {
+      @include flex(row, center, start);
+      gap: 0.5em;
+      width: 100%;
+    }
   }
 }
