@@ -133,11 +133,24 @@ main {
   width: 100%;
 }
 
+@keyframes imageSlide {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .testimonial-image-wrapper {
   border-radius: 8px;
   overflow: hidden;
   max-width: 16.5rem;
   box-shadow: 15px 10px 15px rgba(0, 0, 0, 0.15);
+  animation-name: imageSlide;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
 }
 .testimonial-image-wrapper img {
   display: block;
@@ -148,21 +161,22 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
   position: absolute;
   top: calc(50% - 10px);
+  z-index: 1;
   box-shadow: 0px 2px 6px hsla(0, 0%, 0%, 0.2);
   background-color: white;
   border-radius: 16px;
   width: 4rem;
   overflow: hidden;
-  transform: scale(0.9);
 }
 .button-controls .slider-button {
   border: none;
   background-color: white;
   cursor: pointer;
-  padding: 0.4rem;
+  padding: 0.5rem;
+  padding-inline: 0.7rem;
   transition: background-color 200ms linear;
 }
 .button-controls .slider-button:hover {
@@ -172,6 +186,15 @@ main {
   outline-color: hsl(221, 100%, 79%);
 }
 
+@keyframes quoteSlide {
+  0% {
+    transform: translateX(-150px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .figure-wrapper {
   position: relative;
   display: flex;
@@ -180,6 +203,9 @@ main {
   align-items: center;
   margin-top: 3rem;
   max-width: 21rem;
+  animation-name: quoteSlide;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
 }
 .figure-wrapper .quotes-image {
   position: absolute;
@@ -195,6 +221,10 @@ main {
 
 .figcaption-wrapper {
   text-align: center;
+  animation-name: quoteSlide;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-direction: normal;
 }
 .figcaption-wrapper .person {
   font-weight: 700;
@@ -241,7 +271,7 @@ main {
   .figure-wrapper {
     margin: 0;
     padding: 0;
-    max-width: 33ch;
+    max-width: 24rem;
     transform: translateX(40px);
   }
   .figure-wrapper .quotes-image {
