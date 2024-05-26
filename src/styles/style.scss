@@ -23,11 +23,16 @@ main {
 }
 
 .carousel-wrapper {
-  @include flex(column, center, center); //Aligning controls in the center
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  place-content: center;
+  place-items: center;
 }
 
 .testimonial-container {
   @include flex(column, center, center);
+  grid-area: 1/1/3/2;
 }
 
 //hide other testimonial class
@@ -47,12 +52,7 @@ main {
 
 @keyframes imageSlide {
   0% {
-    transform: translateX(100px);
     opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
 
@@ -66,7 +66,6 @@ main {
   animation-name: imageSlide;
   animation-duration: 0.6s;
   animation-timing-function: ease-in;
-  animation-direction: normal;
 
   img {
     display: block;
@@ -77,36 +76,30 @@ main {
 .button-controls {
   @include flex(row, center, space-between);
 
-  position: absolute;
-  top: calc(50% - 10px);
+  grid-area: 1/1/3/2;
   z-index: 1;
-  box-shadow: 0px 2px 6px hsla(0, 0%, 0%, 0.2);
-  background-color: white;
+  filter: drop-shadow(0px 2px 6px hsla(0, 0%, 0%, 0.2));
   border-radius: 16px;
   width: 4rem;
   overflow: hidden;
+}
 
-  .slider-button {
-    border: none;
-    background-color: white;
-    cursor: pointer;
-    padding: 0.5rem;
-    padding-inline: 0.7rem;
-    transition: background-color 200ms linear;
-  }
+.slider-button {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  padding-inline: 0.7rem;
+  transition: background-color 200ms linear;
+}
 
-  .slider-button:hover {
-    background-color: #e9e9e9;
-  }
-
-  .slider-button:focus {
-    outline-color: hsl(221, 100%, 79%);
-  }
+.slider-button:hover {
+  background-color: #e9e9e9;
 }
 
 @keyframes quoteSlide {
   0% {
-    transform: translateX(-150px);
+    transform: translateX(-100px);
     opacity: 0;
   }
 
@@ -159,12 +152,24 @@ main {
 
 //Tablet breakpoint - 768px
 @media (min-width: 48rem) {
+  .carousel-wrapper {
+    grid-template-rows: repeat(
+      5,
+      1fr
+    ); //Increasing grid rows for tablet size and positioning buttons
+  }
+
+  .testimonial-container {
+    grid-area: 1/1/6/2;
+  }
+
   .testimonial-image-wrapper {
     max-width: 24rem;
   }
 
   .button-controls {
-    top: calc(50% + 40px);
+    grid-area: 3/1/5/2;
+    margin-bottom: 0.5rem;
   }
 
   .pattern-bg {
@@ -179,12 +184,17 @@ main {
     max-width: none;
   }
 
-  .testimonial-image-wrapper {
-    max-width: none;
+  .carousel-wrapper {
+    grid-template-rows: repeat(7, 1fr);
   }
 
   .testimonial-container {
     @include flex(row-reverse, center, center);
+    grid-area: 1/1/7/2;
+  }
+
+  .testimonial-image-wrapper {
+    max-width: none;
   }
 
   .pattern-bg {
@@ -194,8 +204,9 @@ main {
   }
 
   .button-controls {
-    top: calc(100% - 15px);
-    left: calc(50% - 50px);
+    grid-area: 6/1/8/2;
+    margin-bottom: 0;
+    //margin-top: 3.2rem;
   }
 
   .figure-wrapper {
