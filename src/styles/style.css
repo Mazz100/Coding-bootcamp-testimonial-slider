@@ -233,20 +233,38 @@ main {
 }
 
 .attribution {
-  display: block;
   text-align: center;
   font-size: 0.875rem;
 }
 
 .footer-links {
+  position: relative;
   color: hsl(243, 100%, 65%);
+  padding: 0.2em;
+  transition: color 200ms ease-in;
   text-decoration: none;
+  overflow: hidden;
 }
 
-.footer-links:hover {
-  text-decoration-line: underline;
-  text-decoration-color: black;
-  text-decoration-thickness: 2px;
+.footer-links::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  height: 0.15em;
+  transition: scale 200ms ease-in-out;
+  scale: 0;
+}
+
+.footer-links:hover::before,
+.footer-links:focus::before {
+  scale: 1;
+}
+
+.footer-links:hover.footer-links:focus {
+  color: black;
 }
 
 @media (min-width: 48rem) {
